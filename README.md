@@ -2,6 +2,204 @@
 
 ## Overview
 
+ARIA (Adaptive Recruiter Intelligence Agent) is an AI-powered candidate ranking system developed for the **Redrob Data & AI Challenge 2026**.
+
+Instead of relying on traditional keyword-based matching, ARIA evaluates candidates holistically by combining semantic understanding, career progression, recruiter behavior signals, and explainable hybrid scoring to generate a trustworthy shortlist.
+
+---
+
+## Problem Statement
+
+Traditional Applicant Tracking Systems (ATS) primarily depend on keyword matching, often overlooking highly qualified candidates whose experience and skills are expressed differently.
+
+Recruiters need a system that understands **context rather than keywords**, evaluates the complete candidate profile, and produces explainable recommendations.
+
+---
+
+## Solution
+
+ARIA follows a hybrid AI pipeline that combines semantic matching with recruiter-oriented behavioral analysis.
+
+### Pipeline
+
+```
+Job Description
+        │
+        ▼
+Feature Extraction
+        │
+        ▼
+Semantic Matching (TF-IDF + Cosine Similarity)
+        │
+        ▼
+Behavioral Signal Analysis
+        │
+        ▼
+Penalty & Trap Detection
+        │
+        ▼
+Hybrid Scoring Engine
+        │
+        ▼
+Reason Generation
+        │
+        ▼
+Top-100 Candidate Ranking
+```
+
+---
+
+## Project Architecture
+
+```
+src/
+├── load_data.py
+├── feature_engineering.py
+├── jd_parser.py
+├── semantic_matcher.py
+├── signal_engine.py
+├── trap_detector.py
+├── scoring_engine.py
+├── reason_generator.py
+└── ranker.py
+```
+
+---
+
+## Core Components
+
+### Data Loader
+
+Loads candidate profiles from the provided dataset.
+
+### Feature Engineering
+
+Extracts recruiter-relevant information including:
+
+* Skills
+* Professional experience
+* Career history
+* Company information
+* Behavioral indicators
+
+### Semantic Matcher
+
+Measures semantic similarity between candidate profiles and job descriptions using:
+
+* TF-IDF Vectorization
+* Cosine Similarity
+
+### Signal Engine
+
+Evaluates recruiter-centric signals such as:
+
+* Open-to-work status
+* Recruiter response rate
+* GitHub activity
+* Notice period
+* Relocation preference
+
+### Trap Detector
+
+Applies penalties for profiles that indicate lower suitability, including inactive or low-engagement candidates.
+
+### Scoring Engine
+
+Combines semantic relevance, behavioral signals, and penalties into a final ranking score.
+
+### Reason Generator
+
+Produces explainable reasons describing why a candidate received a particular score.
+
+### Ranking Engine
+
+Ranks all candidates and exports the Top-100 recommendations in the required submission format.
+
+---
+
+## Technology Stack
+
+### Programming Language
+
+* Python 3.10+
+
+### Libraries
+
+* NumPy
+* Pandas
+* Scikit-Learn
+* JSONLines
+* Streamlit (Optional Demo)
+
+### AI Techniques
+
+* TF-IDF Vectorization
+* Cosine Similarity
+* Hybrid Rule-Based Scoring
+* Explainable Candidate Ranking
+
+---
+
+## How to Run
+
+Clone the repository:
+
+```bash
+git clone https://github.com/Jayanthsadurla/ARIA-Adaptive-Recruiter-Intelligence-Agent.git
+cd ARIA-Adaptive-Recruiter-Intelligence-Agent
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Place the dataset inside:
+
+```
+data/candidates.jsonl
+```
+
+Run:
+
+```bash
+python rank.py
+```
+
+---
+
+## Output
+
+ARIA generates:
+
+* Ranked Top-100 candidate recommendations
+* Explainable ranking reasons
+* Submission-ready `team_aria.csv`
+
+---
+
+## Repository
+
+```
+src/
+data/
+rank.py
+requirements.txt
+README.md
+team_aria.csv
+```
+
+---
+
+## Team
+
+**ARIA – Adaptive Recruiter Intelligence Agent**
+
+Developed for the **Redrob Data & AI Challenge 2026**.
+
+## Overview
+
 ARIA (Adaptive Recruiter Intelligence Agent) is an AI-powered candidate discovery and ranking system designed to emulate the decision-making process of experienced recruiters.
 
 Traditional recruitment systems rely heavily on keyword matching, often overlooking candidates with strong underlying potential and relevant experience. ARIA addresses this limitation by evaluating candidates holistically through semantic understanding, career progression, behavioral signals, and explainable scoring.
